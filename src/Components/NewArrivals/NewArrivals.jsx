@@ -6,7 +6,10 @@ const NewArrivals = () => {
   const [new_arrivals, setNew_arrivals] = useState([]);
 
   useEffect(() => {
-    fetch("https://vastra-vila.onrender.com/newcollection")
+    fetch(
+      "https://vastra-vila-backend.onrender.com/newcollection" ||
+        "http://localhost:4000/newcollection"
+    )
       .then((response) => response.json())
       .then((data) => setNew_arrivals(data));
   }, []);
