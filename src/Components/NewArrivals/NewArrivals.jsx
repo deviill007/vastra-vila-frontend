@@ -6,7 +6,7 @@ const NewArrivals = () => {
   const [new_arrivals, setNew_arrivals] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.API_BASE_URL}/newcollection`)
+    fetch("https://vastra-vila.onrender.com/newcollection")
       .then((response) => response.json())
       .then((data) => setNew_arrivals(data));
   }, []);

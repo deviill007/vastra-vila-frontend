@@ -17,7 +17,7 @@ const LoginSignup = () => {
   const login = async () => {
     console.log("Login", formData);
     let responseData;
-    await fetch(`${process.env.API_BASE_URL}/login`, {
+    await fetch(`https://vastra-vila.onrender.com/login`, {
       method: "POST",
       headers: {
         Accept: "application/form-data",
@@ -37,7 +37,7 @@ const LoginSignup = () => {
   const signup = async () => {
     console.log("Sign Up", formData);
     let responseData;
-    await fetch(`${process.env.API_BASE_URL}/signup`, {
+    await fetch(`https://vastra-vila.onrender.com/signup`, {
       method: "POST",
       headers: {
         Accept: "application/form-data",
