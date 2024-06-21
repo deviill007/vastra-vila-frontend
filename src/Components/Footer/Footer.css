@@ -1,0 +1,200 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #111;
+  color: #fff;
+}
+.footer .quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+.quote .quote-text p {
+  font-size: 20px;
+  font-weight: 600;
+  max-width: 600px;
+  text-align: justify;
+  padding: 20px;
+  border-top: 1px solid #333;
+}
+.quote-text p span {
+  color: aqua;
+}
+
+.quote .quote-image {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: 600px;
+  height: 150px;
+  justify-content: center;
+  border: 1px solid #333;
+}
+.quote-image img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+.trust-us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+  gap: 50px;
+}
+.trust-us p span {
+  font-size: 60px;
+  font-weight: 100;
+}
+.trust-us .logo-trust {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+.trust-us .logo-trust .img {
+  height: 70px;
+  width: 70px;
+  color: #777;
+}
+.trust-us button {
+  width: 200px;
+  height: 60px;
+  border-radius: 80px;
+  background: #1d1d1d;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+@media (max-width: 1280px) {
+  .footer .quote {
+    margin-top: 40px;
+    gap: 16px;
+  }
+  .quote .quote-text p {
+    font-size: 18px;
+    padding: 18px;
+    max-width: 500px;
+    font-weight: 500;
+  }
+  .quote .quote-image {
+    gap: 18px;
+    width: 500px;
+    height: 140px;
+  }
+  .quote-image img {
+    height: 60px;
+    width: 60px;
+  }
+  .quote-image h2 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .trust-us {
+    margin: 45px;
+    gap: 40px;
+  }
+  .trust-us p span {
+    font-size: 50px;
+  }
+  .trust-us .logo-trust {
+    gap: 80px;
+  }
+  .trust-us .logo-trust .img {
+    height: 70px;
+    width: 70px;
+  }
+  .trust-us button {
+    width: 180px;
+    height: 50px;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .trust-us {
+    margin: 40px;
+    gap: 40px;
+    text-align: center;
+  }
+  .trust-us p span {
+    font-size: 40px;
+  }
+}
+@media (max-width: 800px) {
+  .quote .quote-text p {
+    font-size: 14px;
+    max-width: 400px;
+    font-weight: 400;
+  }
+  .quote .quote-image {
+    gap: 14px;
+    width: 400px;
+    height: 120px;
+  }
+  .quote-image img {
+    height: 50px;
+    width: 50px;
+  }
+  .quote-image h2 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .trust-us p span {
+    font-size: 40px;
+  }
+  .trust-us .logo-trust .img {
+    height: 40px;
+    width: 40px;
+  }
+  .trust-us button {
+    width: 180px;
+    height: 50px;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .quote .quote-text p {
+    font-size: 14px;
+    max-width: 300px;
+    font-weight: 400;
+  }
+  .quote .quote-image {
+    gap: 12px;
+    width: 300px;
+    height: 100px;
+  }
+  .quote-image img {
+    height: 40px;
+    width: 40px;
+  }
+  .quote-image h2 {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .trust-us {
+    margin: 30px;
+    gap: 30px;
+  }
+  .trust-us p span {
+    font-size: 30px;
+  }
+  .trust-us .logo-trust {
+    gap: 40px;
+  }
+  .trust-us .logo-trust .img {
+    height: 30px;
+    width: 30px;
+  }
+  .trust-us button {
+    width: 140px;
+    height: 50px;
+    margin-top: 10px;
+  }
+}
