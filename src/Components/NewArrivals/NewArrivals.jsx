@@ -6,7 +6,7 @@ const NewArrivals = () => {
   const [new_arrivals, setNew_arrivals] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/newcollection")
+    fetch(`${process.env.API_BASE_URL}/newcollection`)
       .then((response) => response.json())
       .then((data) => setNew_arrivals(data));
   }, []);
