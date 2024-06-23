@@ -7,17 +7,29 @@ import { ShopContext } from "../../Context/ShopContext";
 const ProductDisplay = (props) => {
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
+
+  const serverUrl = "https://vastra-vila-backend.onrender.com"; // Define your server URL here
+
+  // Return null or a loading message if product is undefined
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="productdisplay">
       <div className="productdisplay-left">
         <div className="productdisplay-img-list">
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
+          <img src={`${serverUrl}${product.image}`} alt="" />
+          <img src={`${serverUrl}${product.image}`} alt="" />
+          <img src={`${serverUrl}${product.image}`} alt="" />
+          <img src={`${serverUrl}${product.image}`} alt="" />
         </div>
         <div className="productdisplay-img">
-          <img className="productdisplay-main-img" src={product.image} alt="" />
+          <img
+            className="productdisplay-main-img"
+            src={`${serverUrl}${product.image}`}
+            alt=""
+          />
         </div>
       </div>
       <div className="productdisplay-right">
