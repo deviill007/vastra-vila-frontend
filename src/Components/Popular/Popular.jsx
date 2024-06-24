@@ -13,7 +13,7 @@ const Popular = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          "https://vastra-vila-backend.onrender.com/newcollection"
+          "https://vastra-vila-backend.onrender.com/popularinwomen"
         );
 
         if (!response.ok) {
