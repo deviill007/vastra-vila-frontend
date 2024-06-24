@@ -37,7 +37,7 @@ export default function Navbar() {
       <div className="nav-logo">
         <img src={logo} alt="Logo" />
       </div>
-      <RiMenuFill onClick={menu_toggle} className="nav-menu-dropdown" />
+
       <ul ref={menuRef} className="nav-menu">
         <li
           onClick={() => {
@@ -103,6 +103,7 @@ export default function Navbar() {
           <img src={cart_icon} alt="Cart" />
         </Link>
         <div className="nav-cart-count">{getTotalCartItems()}</div>
+        <RiMenuFill onClick={menu_toggle} className="nav-menu-dropdown" />
       </div>
     </div>
   );

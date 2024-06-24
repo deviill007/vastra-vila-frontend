@@ -52,6 +52,10 @@
   font-size: 15px;
   cursor: pointer;
 }
+.loginsignup-container button[disabled] {
+  cursor: not-allowed;
+  background: #464646;
+}
 .loginsignup-login {
   display: flex;
   flex-direction: column;

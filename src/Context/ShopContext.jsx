@@ -15,60 +15,103 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-    fetch("https://vastra-vila-backend.onrender.com/allproducts")
-      .then((response) => response.json())
-      .then((data) => setAll_product(data))
-      .catch((error) => console.error("Error fetching products:", error));
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          "https://vastra-vila-backend.onrender.com/allproducts"
+        );
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        const data = await response.json();
+        setAll_product(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    const fetchCartItems = async () => {
+      try {
+        const response = await fetch(
+          "https://vastra-vila-backend.onrender.com/getcart",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "auth-token": `${localStorage.getItem("auth-token")}`,
+              "Content-Type": "application/json",
+            },
+            body: "",
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        const data = await response.json();
+        setCartItems(data);
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+      }
+    };
+
+    fetchProducts();
 
     if (localStorage.getItem("auth-token")) {
-      fetch("https://vastra-vila-backend.onrender.com/getcart", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "auth-token": `${localStorage.getItem("auth-token")}`,
-          "Content-Type": "application/json",
-        },
-        body: "",
-      })
-        .then((response) => response.json())
-        .then((data) => setCartItems(data))
-        .catch((error) => console.error("Error fetching cart items:", error));
+      fetchCartItems();
     }
   }, []);
 
-  const addToCart = (itemId) => {
+  const addToCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://vastra-vila-backend.onrender.com/addtocart", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "auth-token": `${localStorage.getItem("auth-token")}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ itemId: itemId }),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error("Error adding to cart:", error));
+      try {
+        const response = await fetch(
+          "https://vastra-vila-backend.onrender.com/addtocart",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "auth-token": `${localStorage.getItem("auth-token")}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ itemId: itemId }),
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error("Error adding to cart:", error);
+      }
     }
   };
 
-  const removeFromCart = (itemId) => {
+  const removeFromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://vastra-vila-backend.onrender.com/removefromcart", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "auth-token": `${localStorage.getItem("auth-token")}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ itemId: itemId }),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error("Error removing from cart:", error));
+      try {
+        const response = await fetch(
+          "https://vastra-vila-backend.onrender.com/removefromcart",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "auth-token": `${localStorage.getItem("auth-token")}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ itemId: itemId }),
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error("Error removing from cart:", error);
+      }
     }
   };
 

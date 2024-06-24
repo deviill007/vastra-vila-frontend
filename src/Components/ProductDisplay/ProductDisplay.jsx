@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./ProductDisplay.css";
 import star from "../Assets/star_icon.png";
 import star_dull from "../Assets/star_dull_icon.png";
@@ -7,11 +7,16 @@ import { ShopContext } from "../../Context/ShopContext";
 const ProductDisplay = (props) => {
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
+  const [selectedSize, setSelectedSize] = useState("");
 
   // Return null or a loading message if product is undefined
   if (!product) {
     return <div>Loading...</div>;
   }
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
 
   return (
     <div className="productdisplay">
@@ -55,17 +60,23 @@ const ProductDisplay = (props) => {
         <div className="productdisplay-right-size">
           <h1>Select Size</h1>
           <div className="productdisplay-right-sizes">
-            <div>S</div>
-            <div>M</div>
-            <div>L</div>
-            <div>XL</div>
-            <div>XXL</div>
+            {["S", "M", "L", "XL", "XXL"].map((size) => (
+              <div
+                key={size}
+                className={`size-box ${
+                  selectedSize === size ? "selected" : ""
+                }`}
+                onClick={() => handleSizeClick(size)}
+              >
+                {size}
+              </div>
+            ))}
           </div>
         </div>
         <button
-          onClick={() => {
-            addToCart(product.id);
-          }}
+          onClick={() => addToCart(product.id)}
+          disabled={!selectedSize}
+          className={!selectedSize ? "disabled" : ""}
         >
           ADD TO CART
         </button>
